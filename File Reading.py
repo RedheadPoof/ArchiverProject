@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import os.path
 
 
@@ -35,3 +36,6 @@ if __name__ == '__main__':
     print(input_string)
 
 
+=======
+def filereading(filepath):
+>>>>>>> origin/File_reading
