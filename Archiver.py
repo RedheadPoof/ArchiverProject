@@ -58,18 +58,18 @@ def unzip_string(processed_string):
     processed_list = list(map(int, processed_string.split()))
     additional_sequence = {}
     number_additional_sequence = 256
-    processed_sequense = chr(processed_list[0])
-    uncompressed_string = processed_sequense
+    processed_sequence = chr(processed_list[0])
+    uncompressed_string = processed_sequence
     for counter_list in range(1, len(processed_list)):
         if processed_list[counter_list] < 256:
             uncompressed_sequence = chr(processed_list[counter_list])
         else:
             uncompressed_sequence = additional_sequence[processed_list[counter_list]]
         uncompressed_string += uncompressed_sequence
-        processed_sequense += uncompressed_sequence[0]
-        additional_sequence[number_additional_sequence] = processed_sequense
+        processed_sequence += uncompressed_sequence[0]
+        additional_sequence[number_additional_sequence] = processed_sequence
         number_additional_sequence += 1
-        processed_sequense = uncompressed_sequence
+        processed_sequence = uncompressed_sequence
     return uncompressed_string
 
 
