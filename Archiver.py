@@ -74,6 +74,8 @@ def unzip_string(processed_string):
 
 
 if __name__ == '__main__':
-    input_string = str(input())
+    input_file_path = str(input())
+    input_string, part_file_name = read_file(input_file_path)
     output_string = unzip_string(input_string)
+    write_file(output_string, part_file_name)
     print(output_string)
