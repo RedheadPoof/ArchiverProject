@@ -9,11 +9,11 @@ def read_file(file_path, zipping=False):
         if "compressed" not in file_name:
             print("File name is not correct. Name must include word 'compressed'.")
             out_string = None
-            return out_string
+            return out_string, file_name
     try:
         with open(file_path, "r") as input_file:
             out_string = input_file.readline()
-    except FileNotFoundError as NoFile:
+    except FileNotFoundError:
         print("So file is not found, try again")
         out_string = None
     return out_string, file_name
