@@ -69,7 +69,14 @@ def unzip_string(processed_string):
     return uncompressed_string
 
 
-def
+def menu(command_message="begin", input_file_path=None):
+    with open(menu.txt) as menu_file:
+        menu_text = menu_file.readlines()
+    menu_main = "Select option:"
+    if input_file_path:
+        menu_status = "Selected file " + os.path.basename(input_file_path)
+    else:
+        menu_status = "No one file is selected"
 
 
 if __name__ == '__main__':
