@@ -80,7 +80,7 @@ def menu(command_message="begin", file_path=None):
     if command_message == "begin":
         print(f"\n{menu_main} \n{menu_status} \n{menu_text}")
         new_command_message = str(input())
-        menu(new_command_message)
+        menu(new_command_message, file_path)
     elif command_message == "1":
         input_file_path = str(input("\n Print file path or fie name: "))
         input_text, input_file_name = read_file(input_file_path)
