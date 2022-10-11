@@ -2,20 +2,16 @@
 import os.path
 
 
-def read_file(file_path, zipping=False):
+def read_file(file_path):
     file_path = os.path.abspath(file_path)
     file_name = os.path.basename(file_path).split(".")[0]
-    if zipping:
-        if "compressed" not in file_name:
-            print("File name is not correct. Name must include word 'compressed'.")
-            out_string = None
-            return out_string, file_name
     try:
         with open(file_path, "r") as input_file:
             out_string = input_file.readline()
     except FileNotFoundError:
         print("So file is not found, try again")
         out_string = None
+        file_name = None
     return out_string, file_name
 
 
