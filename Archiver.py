@@ -70,14 +70,14 @@ def unzip_string(processed_string):
 
 
 def menu(command_message="begin", file_path=None):
-    with open("menu.txt") as menu_file:
-        menu_text = menu_file.readlines()
-    menu_main = "Select option(print number without point):"
-    if file_path:
-        menu_status = "Selected file " + os.path.basename(file_path)
-    else:
-        menu_status = "No one file is selected"
     if command_message == "begin":
+        with open("menu.txt") as menu_file:
+            menu_text = menu_file.readlines()
+        menu_main = "Select option(print number without point):"
+        if file_path:
+            menu_status = "Selected file " + os.path.basename(file_path)
+        else:
+            menu_status = "No one file is selected"
         print(f"\n{menu_main} \n{menu_status} \n{menu_text}")
         new_command_message = str(input())
         menu(new_command_message, file_path)
