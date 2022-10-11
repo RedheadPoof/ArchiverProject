@@ -112,6 +112,10 @@ def menu(command_message="begin", file_path=None):
     #  4. Exit
     elif command_message == "4":
         print("Goodbye")
+    #  Incorrect command
+    else:
+        print("Incorrect command")
+        menu()
 
 
 if __name__ == '__main__':
