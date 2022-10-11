@@ -9,17 +9,15 @@ def read_file(file_path):
         with open(file_path, "r") as input_file:
             out_string = input_file.readline()
     except FileNotFoundError:
-        print("So file is not found, try again")
+        print("File not found, try again")
         out_string = None
         file_name = None
     return out_string, file_name
 
 
-def write_file(final_string, input_file_name, zipping=False):
+def write_file(final_string, input_file_name, zipping=True):
     if zipping:
-        output_file_name = input_file_name + "_uncompressed.txt"
-    else:
-        output_file_name = input_file_name + "_compressed.txt"
+        output_file_name = input_file_name + "_compress.txt"
     with open(output_file_name, "w") as output_file:
         output_file.write(final_string)
     return
