@@ -110,8 +110,5 @@ def menu(command_message="begin", file_path=None):
 
 
 if __name__ == '__main__':
-    input_file_path = str(input())
-    input_string, part_file_name = read_file(input_file_path)
-    output_string = unzip_string(input_string)
-    write_file(output_string, part_file_name)
-    print(output_string)
+    menu()
+
