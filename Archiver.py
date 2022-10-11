@@ -73,7 +73,7 @@ def menu(command_message="begin", file_path=None):
     #  Output menu
     if command_message == "begin":
         with open("menu.txt") as menu_file:
-            menu_text = menu_file.readlines()
+            menu_text = "".join(menu_file.readlines())
         menu_main = "Select option(print number without point):"
         if file_path:
             menu_status = "Selected file " + os.path.basename(file_path)
@@ -84,7 +84,7 @@ def menu(command_message="begin", file_path=None):
         menu(new_command_message, file_path)
     #  1. Choose file
     elif command_message == "1":
-        input_file_path = str(input("\n Print file path or fie name: "))
+        input_file_path = str(input("Print file path or file name: "))
         input_text, input_file_name = read_file(input_file_path)
         if input_text:
             print("File chosen successfully")
