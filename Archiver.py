@@ -105,6 +105,8 @@ def menu(command_message="begin", file_path=None):
         else:
             print("File cannot unzip, no 'compressed' in file name")
             menu()
+    elif command_message == "4":
+        print("Goodbye")
 
 
 if __name__ == '__main__':
