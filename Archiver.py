@@ -48,3 +48,4 @@ if __name__ == '__main__':
     print("String read")
     output_string = unzip_string(input_string)
     print(output_string)
+    print("End program")
