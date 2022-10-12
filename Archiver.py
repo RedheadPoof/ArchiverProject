@@ -77,13 +77,22 @@ def menu():
     menu_text = "1.Choose file\n 2.Compress chosen file\n 3.Decompress chosen file\n 4.Exit"
     menu_command = "begin"
     while menu_command != "4":
-        print(f"{menu_file_status} \n{menu_main} \n{menu_text}")
+        print(f"\n{menu_file_status} \n{menu_main} \n{menu_text}")
         menu_command = str(input("Print number of option: "))
         #  Choose file
         if menu_command == "1":
             file_path = str(input("Print file name or file path:"))
-            read_data = read_file(file_path)
+            input_data = read_file(file_path)
+            menu_file_status = "File status: selected " + input_data["file_name"]
             continue
+        #  Compress chosen file
+        elif menu_command == "2":
+            if menu_file_status != "File status: no file selected":
+                output_string = zip_string(input_data["read_string"])
+                write_file(output_string, input_data["file_name"])
+                print("Zip done")
+            else:
+                print("No file selected, zip is not")
 
 
 if __name__ == '__main__':
