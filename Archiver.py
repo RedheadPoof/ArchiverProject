@@ -84,28 +84,25 @@ def menu():
             input_data = read_file(file_path)
             if input_data["file_name"]:
                 menu_file_status = "File status: selected " + os.path.abspath(file_path)
-            continue
         #  Compress chosen file
         elif menu_command == "2":
             if menu_file_status != "File status: no file selected":
                 output_string = zip_string(input_data["read_string"])
                 write_file(output_string, input_data["file_name"])
-                print("Zip done")
+                print("Compress done")
             else:
                 print("No file selected, zip is not")
-            continue
         #  Decompress chosen file
         elif menu_command == "3":
             if menu_file_status != "File status: no file selected":
                 if input_data["file_name"].endswith("compress"):
                     output_string = unzip_string(input_data["read_string"])
                     write_file(output_string, input_data["file_name"])
-                    print("Unzip done")
+                    print("Decompress done")
                 else:
                     print("File name is wrong, unzip is not")
             else:
                 print("No file selected, zip is not")
-            continue
     print("Goodbye")
 
 
