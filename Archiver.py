@@ -69,6 +69,9 @@ def unzip_string(processed_string):
     return uncompressed_string
 
 
+def menu():
+
+
 if __name__ == '__main__':
     input_file_path = str(input())
     input_string, part_file_name = read_file(input_file_path)
