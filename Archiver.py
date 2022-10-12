@@ -9,11 +9,13 @@ def read_file(file_path):
         with open(file_path, "r") as input_file:
             read_string = input_file.readline()
         print(f"File {file_name} chosen")
+        file_size = os.path.getsize(file_path)
     except FileNotFoundError:
         print("File not found, try again")
         read_string = None
         file_name = None
-    out_data = {"read_string": read_string, "file_name": file_name}
+        file_size = 0
+    out_data = {"read_string": read_string, "file_name": file_name, "file_size": file_size}
     return out_data
 
 
@@ -24,7 +26,10 @@ def write_file(final_string, input_file_name, zipping=True):
         output_file_name = input_file_name + "_uncompress.txt"
     with open(output_file_name, "w") as output_file:
         output_file.write(final_string)
-    return
+    file_path = os.path.abspath(output_file_name)
+    file_size = os.path.getsize(file_path)
+    out_data = {"file_size": file_size}
+    return out_data
 
 
 def zip_string(processed_string):
