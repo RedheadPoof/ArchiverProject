@@ -4,15 +4,17 @@ import os.path
 
 def read_file(file_path):
     file_path = os.path.abspath(file_path)
-    file_name = os.path.basename(file_path).split(".")[0]
+    file_name = os.path.basename(file_path)[:-4]
     try:
         with open(file_path, "r") as input_file:
-            out_string = input_file.readline()
+            read_string = input_file.readline()
+        print(f"File {file_name} chosen")
     except FileNotFoundError:
         print("File not found, try again")
-        out_string = None
+        read_string = None
         file_name = None
-    return out_string, file_name
+    out_data = {"read_string": read_string, "file_name": file_name}
+    return out_data
 
 
 def write_file(final_string, input_file_name, zipping=True):
@@ -77,7 +79,9 @@ def menu():
     while menu_command != "4":
         print(f"{menu_file_status} \n{menu_main} \n{menu_text}")
         menu_command = str(input("Print number of option: "))
-
+    #  Choose file
+    if menu_command == "1":
+        file_path = str(input("Print file name or file path:"))
 
 
 
