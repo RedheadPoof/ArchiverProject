@@ -18,6 +18,8 @@ def read_file(file_path):
 def write_file(final_string, input_file_name, zipping=True):
     if zipping:
         output_file_name = input_file_name + "_compress.txt"
+    else:
+        output_file_name = input_file_name + "_uncompress.txt"
     with open(output_file_name, "w") as output_file:
         output_file.write(final_string)
     return
