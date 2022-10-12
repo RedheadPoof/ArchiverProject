@@ -79,10 +79,11 @@ def menu():
     while menu_command != "4":
         print(f"{menu_file_status} \n{menu_main} \n{menu_text}")
         menu_command = str(input("Print number of option: "))
-    #  Choose file
-    if menu_command == "1":
-        file_path = str(input("Print file name or file path:"))
-
+        #  Choose file
+        if menu_command == "1":
+            file_path = str(input("Print file name or file path:"))
+            read_data = read_file(file_path)
+            continue
 
 
 if __name__ == '__main__':
