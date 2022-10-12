@@ -45,5 +45,6 @@ def unzip_string(processed_string):
 
 if __name__ == '__main__':
     input_string = str(input())
+    print("String read")
     output_string = unzip_string(input_string)
     print(output_string)
