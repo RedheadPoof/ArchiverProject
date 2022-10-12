@@ -48,7 +48,6 @@ def zip_string(processed_string):
         else:
             compressed_string += str(ord(compressed_sequence)) + " "
         symbol_of_string_number += 1
-    print(additional_sequence)
     return compressed_string
 
 
