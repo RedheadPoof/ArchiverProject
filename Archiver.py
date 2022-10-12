@@ -70,6 +70,15 @@ def unzip_string(processed_string):
 
 
 def menu():
+    menu_file_status = "File status: no file selected"
+    menu_main = "Select an option:"
+    menu_text = "1.Choose file\n 2.Compress chosen file\n 3.Decompress chosen file\n 4.Exit"
+    menu_command = "begin"
+    while menu_command != "4":
+        print(f"{menu_file_status} \n{menu_main} \n{menu_text}")
+        menu_command = str(input("Print number of option: "))
+
+
 
 
 if __name__ == '__main__':
