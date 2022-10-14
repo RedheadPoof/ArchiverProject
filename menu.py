@@ -35,7 +35,7 @@ def display_menu():
             if menu_file_status != "File status: no file selected":
                 if input_data["file_name"].endswith("compress"):
                     output_string = archiver.unzip_string(input_data["read_string"])
-                    openfile.write_file(output_string, input_data["file_name"])
+                    openfile.write_file(output_string, input_data["file_name"], zipping=False)
                     print("Decompress done")
                 else:
                     print("File name is wrong, unzip is not possible")
