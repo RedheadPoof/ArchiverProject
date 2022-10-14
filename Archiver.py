@@ -96,11 +96,11 @@ def menu():
         elif menu_command == "2":
             if menu_file_status != "File status: no file selected":
                 output_string = zip_string(input_data["read_string"])
-                write_file_data = write_file(output_string, input_data["file_name"])
-                compress_ratio = write_file_data["file_size"] / input_data["file_size"] * 100
+                output_file_data = write_file(output_string, input_data["file_name"])
+                compress_ratio = output_file_data["file_size"] / input_data["file_size"] * 100
                 print(f"Compress done, compress ratio: {compress_ratio}")
             else:
-                print("No file selected, zip is not")
+                print("No file selected, zip is not possible")
         #  Decompress chosen file
         elif menu_command == "3":
             if menu_file_status != "File status: no file selected":
@@ -109,7 +109,7 @@ def menu():
                     write_file(output_string, input_data["file_name"])
                     print("Decompress done")
                 else:
-                    print("File name is wrong, unzip is not")
+                    print("File name is wrong, unzip is not possible")
             else:
                 print("No file selected, zip is not")
     print("Goodbye")
