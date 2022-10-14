@@ -4,7 +4,7 @@ import openfile
 import archiver
 
 
-def menu():
+def display_menu():
     menu_file_status = "File status: no file selected"
     menu_text = "Select an option:\n" \
                 "1.Choose file\n" \
