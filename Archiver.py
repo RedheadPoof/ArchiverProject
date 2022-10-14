@@ -4,12 +4,12 @@ import os.path
 
 def read_file(file_path):
     file_path = os.path.abspath(file_path)
-    file_name = os.path.basename(file_path).split(".")[:-1]
+    file_name = ".".join(os.path.basename(file_path).split(".")[:-1])
     if os.path.basename(file_path).split(".")[-1] == "txt":
         try:
             with open(file_path, "r") as input_file:
                 read_string = input_file.readline()
-            print(f"File {file_name} chosen")
+            print(f"File {file_name}.txt chosen")
             file_size = os.path.getsize(file_path)
             out_data = {"read_string": read_string, "file_name": file_name, "file_size": file_size}
             return out_data
@@ -100,7 +100,7 @@ def menu():
                 output_string = zip_string(input_data["read_string"])
                 output_file_data = write_file(output_string, input_data["file_name"])
                 compress_ratio = output_file_data["file_size"] / input_data["file_size"] * 100
-                print(f"Compress done, compress ratio: {compress_ratio}")
+                print(f"Compress done, compress ratio: {compress_ratio}%")
             else:
                 print("No file selected, zip is not possible")
         #  Decompress chosen file
