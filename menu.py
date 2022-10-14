@@ -40,5 +40,5 @@ def display_menu():
                 else:
                     print("File name is wrong, unzip is not possible")
             else:
-                print("No file selected, zip is not")
+                print("No file selected, zip is not possible")
     print("Goodbye")
