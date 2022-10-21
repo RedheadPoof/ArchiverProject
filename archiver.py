@@ -13,8 +13,9 @@ def zip_string(processed_string):
                 compressed_sequence = processed_sequence
                 symbol_of_string_number += 1
             else:
-                additional_sequence[processed_sequence] = str(number_additional_sequence)
-                number_additional_sequence += 1
+                if number_additional_sequence < 256 * 256:
+                    additional_sequence[processed_sequence] = str(number_additional_sequence)
+                    number_additional_sequence += 1
                 break
         if len(compressed_sequence) != 1:
             compress_sequense = int(additional_sequence[compressed_sequence])
@@ -41,8 +42,9 @@ def unzip_string(processed_list_bytes):
             uncompressed_sequence = additional_sequence[processed_counter]
         uncompressed_string += uncompressed_sequence
         processed_sequence += uncompressed_sequence[0]
-        additional_sequence[number_additional_sequence] = processed_sequence
-        number_additional_sequence += 1
+        if number_additional_sequence < 256 * 256:
+            additional_sequence[number_additional_sequence] = processed_sequence
+            number_additional_sequence += 1
         processed_sequence = uncompressed_sequence
     return uncompressed_string
 
