@@ -1,11 +1,10 @@
 
 
-
 def zip_string(processed_string):
     symbol_of_string_number = 0
     additional_sequence = {}
     number_additional_sequence = 256
-    compressed_string = ""
+    compress_list = []
     while symbol_of_string_number < len(processed_string):
         compressed_sequence = processed_string[symbol_of_string_number]
         while symbol_of_string_number + 1 < len(processed_string):
@@ -18,11 +17,15 @@ def zip_string(processed_string):
                 number_additional_sequence += 1
                 break
         if len(compressed_sequence) != 1:
-            compressed_string += additional_sequence[compressed_sequence] + " "
+            compress_sequense = int(additional_sequence[compressed_sequence])
         else:
-            compressed_string += str(ord(compressed_sequence)) + " "
+            compress_sequense = ord(compressed_sequence)
+        compress_list.append(compress_sequense // 256)
+        compress_list.append(compress_sequense % 256)
         symbol_of_string_number += 1
-    return compressed_string
+        compress_list_bytes = bytes(compress_list)
+    compress_string = compress_list_bytes
+    return compress_string
 
 
 def unzip_string(processed_string):
@@ -42,3 +45,9 @@ def unzip_string(processed_string):
         number_additional_sequence += 1
         processed_sequence = uncompressed_sequence
     return uncompressed_string
+
+if __name__ == '__main__':
+    result = zip_string("dgndbbmmcdimhfcfndikkmgmfckgchccfgaffenbfnlchdjjhdclfafgobngoodgaflgklmhblbnhimgfebghhjajcdijmbbdlhjbfnacbiacliondechadhcglfliem")
+    print(result)
+    with open("test.txt", "wb") as textfile:
+        textfile.write(result)
