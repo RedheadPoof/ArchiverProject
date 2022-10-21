@@ -1,5 +1,6 @@
 
 
+
 def zip_string(processed_string):
     symbol_of_string_number = 0
     additional_sequence = {}
