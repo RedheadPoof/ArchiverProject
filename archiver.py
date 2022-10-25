@@ -1,5 +1,4 @@
 
-
 def zip_string(processed_string):
     symbol_of_string_number = 0
     additional_sequence = {}
@@ -47,9 +46,3 @@ def unzip_string(processed_list_bytes):
             number_additional_sequence += 1
         processed_sequence = uncompressed_sequence
     return uncompressed_string
-
-
-if __name__ == '__main__':
-    result1 = zip_string("dgndbbmmcdimhfcfndikkmgmfckgchccfgaffenbfnlchdjjhdclfafgobngoodgaflgklmhblbnhimgfebghhjajcdijmbbdlhjbfnacbiacliondechadhcglfliem")
-    result2 = unzip_string(result1)
-    print(result2)
