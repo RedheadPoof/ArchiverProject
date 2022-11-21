@@ -26,7 +26,7 @@ def read_file(file_path, zipping=True):
             read_string = input_file.readline()
     else:
         with open(file_path, "rb") as input_file:
-            read_string = input_file.readline()
+            read_string = input_file.read()
     file_size = os.path.getsize(file_path)
     out_data = {"read_string": read_string, "file_name": file_name, "file_size": file_size}
     return out_data

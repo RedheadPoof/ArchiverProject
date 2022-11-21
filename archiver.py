@@ -38,10 +38,16 @@ def unzip_string(processed_list_bytes):
         if processed_counter < 256:
             uncompressed_sequence = chr(processed_counter)
         else:
-            uncompressed_sequence = additional_sequence[processed_counter]
-        uncompressed_string += uncompressed_sequence
+            if processed_counter < number_additional_sequence:
+                uncompressed_sequence = additional_sequence[processed_counter]
+            elif processed_counter == number_additional_sequence:
+                uncompressed_sequence = processed_sequence + processed_sequence[0]
+            else:
+                print(processed_counter)
+                continue
         processed_sequence += uncompressed_sequence[0]
-        if number_additional_sequence < 256 * 256:
+        uncompressed_string += uncompressed_sequence
+        if (processed_sequence not in additional_sequence) & (number_additional_sequence < 256 * 256):
             additional_sequence[number_additional_sequence] = processed_sequence
             number_additional_sequence += 1
         processed_sequence = uncompressed_sequence
