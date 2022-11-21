@@ -20,6 +20,10 @@ def zip_string(processed_string):
             compress_sequense = int(additional_sequence[compressed_sequence])
         else:
             compress_sequense = ord(compressed_sequence)
+            if compress_sequense >= 256:
+                print("Text encoding is not UTF-8, compression is not performed")
+                compress_list_bytes = ""
+                return compress_list_bytes
         compress_bytes = compress_sequense.to_bytes(2, byteorder="big")
         compress_list_bytes += compress_bytes
         symbol_of_string_number += 1

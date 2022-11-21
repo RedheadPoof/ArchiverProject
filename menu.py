@@ -26,9 +26,10 @@ def display_menu():
             if menu_file_status != "File status: no file selected":
                 input_data = openfile.read_file(file_path)
                 output_string = archiver.zip_string(input_data["read_string"])
-                output_file_data = openfile.write_file(output_string, input_data["file_name"])
-                compress_ratio = output_file_data["file_size"] / input_data["file_size"] * 100
-                print(f"Compress done, compress ratio: {compress_ratio}%")
+                if output_string:
+                    output_file_data = openfile.write_file(output_string, input_data["file_name"])
+                    compress_ratio = output_file_data["file_size"] / input_data["file_size"] * 100
+                    print(f"Compress done, compress ratio: {compress_ratio}%")
             else:
                 print("No file selected, zip is not possible")
         #  Decompress chosen file
