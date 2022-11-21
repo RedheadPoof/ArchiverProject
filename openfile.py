@@ -7,6 +7,7 @@ def check_file(file_path):
     file_name = ".".join(os.path.basename(file_path).split(".")[:-1])
     if os.path.basename(file_path).split(".")[-1] == "txt":
         try:
+            input_file = open(file_path, "r")
             print(f"File {file_name}.txt chosen")
             out_data = {"file_name": file_name}
             return out_data
