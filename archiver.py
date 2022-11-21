@@ -3,7 +3,7 @@ def zip_string(processed_string):
     symbol_of_string_number = 0
     additional_sequence = {}
     number_additional_sequence = 256
-    compress_list = []
+    compress_list_bytes = bytearray()
     while symbol_of_string_number < len(processed_string):
         compressed_sequence = processed_string[symbol_of_string_number]
         while symbol_of_string_number + 1 < len(processed_string):
@@ -20,10 +20,9 @@ def zip_string(processed_string):
             compress_sequense = int(additional_sequence[compressed_sequence])
         else:
             compress_sequense = ord(compressed_sequence)
-        compress_list.append(compress_sequense // 256)
-        compress_list.append(compress_sequense % 256)
+        compress_bytes = compress_sequense.to_bytes(2, byteorder="big")
+        compress_list_bytes += compress_bytes
         symbol_of_string_number += 1
-    compress_list_bytes = bytes(compress_list)
     return compress_list_bytes
 
 
