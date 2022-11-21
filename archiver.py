@@ -21,7 +21,7 @@ def zip_string(processed_string):
         else:
             compress_sequense = ord(compressed_sequence)
             if compress_sequense >= 256:
-                print("Text encoding is not UTF-8, compression is not performed")
+                print(f"Text encoding is not UTF-8, compression is not performed: '{compressed_sequence}'")
                 compress_list_bytes = ""
                 return compress_list_bytes
         compress_bytes = compress_sequense.to_bytes(2, byteorder="big")

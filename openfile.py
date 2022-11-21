@@ -23,7 +23,7 @@ def read_file(file_path, zipping=True):
     file_path = os.path.abspath(file_path)
     file_name = ".".join(os.path.basename(file_path).split(".")[:-1])
     if zipping:
-        with open(file_path, "r") as input_file:
+        with open(file_path, "r", encoding="utf-8") as input_file:
             read_string = input_file.readline()
     else:
         with open(file_path, "rb") as input_file:
