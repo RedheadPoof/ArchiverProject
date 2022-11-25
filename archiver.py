@@ -14,13 +14,15 @@ def number_to_bytes(number, type_number):
 
 
 def bytes_to_number(list_bytes):
-    type_number = list_bytes[0] // 100
-    count_bytes = list_bytes[0] % 100
+    processed_list = list_bytes.copy()
+    type_number = processed_list[0] // 100
+    count_bytes = processed_list[0] % 100
     number = 0
     for i in range(1, count_bytes + 1):
-        number += list_bytes[i] * (256 ** (i - 1))
+        number += processed_list[i] * (256 ** (i - 1))
     out_data = {"number": number, "type_number": type_number, "length_number": count_bytes + 1}
     return out_data
+
 
 def zip_string(processed_string):
     symbol_of_string_number = 0
@@ -54,19 +56,21 @@ def unzip_string(processed_list_bytes):
     processed_list = list(processed_list_bytes)
     additional_sequence = {}
     number_additional_sequence = 256
+    processed_data = bytes_to_number(processed_list[0:56])
+    processed_sequence = chr(processed_data["number"])
+    first_byte_counter = processed_data["length_number"]
     uncompressed_string = processed_sequence
-    for counter_list in range(2, len(processed_list), 2):
-        processed_counter = processed_list[counter_list] * 256 + processed_list[counter_list + 1]
-        if processed_counter < 256:
+    while first_byte_counter < len(processed_list):
+        processed_data = bytes_to_number(processed_list[first_byte_counter:(first_byte_counter + 56)])
+        processed_counter = processed_data["number"]
+        first_byte_counter += processed_data["length_number"]
+        if processed_data["type_number"] == 0:
             uncompressed_sequence = chr(processed_counter)
         else:
             if processed_counter < number_additional_sequence:
                 uncompressed_sequence = additional_sequence[processed_counter]
             elif processed_counter == number_additional_sequence:
                 uncompressed_sequence = processed_sequence + processed_sequence[0]
-            else:
-                print(processed_counter)
-                continue
         processed_sequence += uncompressed_sequence[0]
         uncompressed_string += uncompressed_sequence
         if (processed_sequence not in additional_sequence) & (number_additional_sequence < 256 * 256):
