@@ -2,7 +2,7 @@
 def number_to_bytes(number, type_number):
     count_bytes = 1
     while True:
-        if number > 256 ** count_bytes:
+        if number >= 256 ** count_bytes:
             count_bytes += 1
         else:
             break
@@ -37,9 +37,8 @@ def zip_string(processed_string):
                 compressed_sequence = processed_sequence
                 symbol_of_string_number += 1
             else:
-                if number_additional_sequence < 256 * 256:
-                    additional_sequence[processed_sequence] = str(number_additional_sequence)
-                    number_additional_sequence += 1
+                additional_sequence[processed_sequence] = str(number_additional_sequence)
+                number_additional_sequence += 1
                 break
         if len(compressed_sequence) != 1:
             compress_sequence = int(additional_sequence[compressed_sequence])
