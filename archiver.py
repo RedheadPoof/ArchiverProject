@@ -17,14 +17,10 @@ def zip_string(processed_string):
                     number_additional_sequence += 1
                 break
         if len(compressed_sequence) != 1:
-            compress_sequense = int(additional_sequence[compressed_sequence])
+            compress_sequence = int(additional_sequence[compressed_sequence])
         else:
-            compress_sequense = ord(compressed_sequence)
-            if compress_sequense >= 256:
-                print(f"Text encoding is not UTF-8, compression is not performed: '{compressed_sequence}'")
-                compress_list_bytes = ""
-                return compress_list_bytes
-        compress_bytes = compress_sequense.to_bytes(2, byteorder="big")
+            compress_sequence = ord(compressed_sequence)
+        compress_bytes = compress_sequence(2, byteorder="big")
         compress_list_bytes += compress_bytes
         symbol_of_string_number += 1
     return compress_list_bytes
