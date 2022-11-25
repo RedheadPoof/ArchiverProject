@@ -8,10 +8,19 @@ def number_to_bytes(number, type_number):
             break
     info_number = type_number * 100 + count_bytes
     info_byte = info_number.to_bytes(1, byteorder="big")
-    number_in_bytes = number.to_bytes(count_bytes, byteorder="big")
+    number_in_bytes = number.to_bytes(count_bytes, byteorder="little")
     converted_number = info_byte + number_in_bytes
     return converted_number
 
+
+def bytes_to_number(list_bytes):
+    type_number = list_bytes[0] // 100
+    count_bytes = list_bytes[0] % 100
+    number = 0
+    for i in range(1, count_bytes + 1):
+        number += list_bytes[i] * (256 ** (i - 1))
+    out_data = {"number": number, "type_number": type_number, "length_number": count_bytes + 1}
+    return out_data
 
 def zip_string(processed_string):
     symbol_of_string_number = 0
@@ -45,7 +54,6 @@ def unzip_string(processed_list_bytes):
     processed_list = list(processed_list_bytes)
     additional_sequence = {}
     number_additional_sequence = 256
-    processed_sequence = chr(processed_list[0] * 256 + processed_list[1])
     uncompressed_string = processed_sequence
     for counter_list in range(2, len(processed_list), 2):
         processed_counter = processed_list[counter_list] * 256 + processed_list[counter_list + 1]
