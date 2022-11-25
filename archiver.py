@@ -32,10 +32,11 @@ def zip_string(processed_string):
                 break
         if len(compressed_sequence) != 1:
             compress_sequence = int(additional_sequence[compressed_sequence])
+            type_number = 1
         else:
             compress_sequence = ord(compressed_sequence)
-        compress_bytes = compress_sequence(2, byteorder="big")
-        compress_list_bytes += compress_bytes
+            type_number = 0
+        compress_list_bytes += number_to_bytes(compress_sequence, type_number)
         symbol_of_string_number += 1
     return compress_list_bytes
 
