@@ -1,4 +1,18 @@
 
+def number_to_bytes(number, type_number):
+    count_bytes = 1
+    while True:
+        if number > 256 ** count_bytes:
+            count_bytes += 1
+        else:
+            break
+    info_number = type_number * 100 + count_bytes
+    info_byte = info_number.to_bytes(1, byteorder="big")
+    number_in_bytes = number.to_bytes(count_bytes, byteorder="big")
+    converted_number = info_byte + number_in_bytes
+    return converted_number
+
+
 def zip_string(processed_string):
     symbol_of_string_number = 0
     additional_sequence = {}
